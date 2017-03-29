@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OgreShaderLearn", "OgreShaderLearn\OgreShaderLearn.vcxproj", "{29F856E4-A679-4BAA-AED9-B9AE67CBD6BF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BaseAppFrame", "BaseAppFrame\BaseAppFrame.vcxproj", "{D51D440D-6C23-425E-8FBD-F896FFEB50DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Effect", "Effect", "{2C710783-1967-472E-A6F1-3D7A7F877F8E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SampleShader", "Effect\SampleShader\SampleShader.vcxproj", "{EAC98606-7F16-42EA-9704-F15D363E7379}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29F856E4-A679-4BAA-AED9-B9AE67CBD6BF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{29F856E4-A679-4BAA-AED9-B9AE67CBD6BF}.Debug|Win32.Build.0 = Debug|Win32
+		{29F856E4-A679-4BAA-AED9-B9AE67CBD6BF}.Release|Win32.ActiveCfg = Release|Win32
+		{29F856E4-A679-4BAA-AED9-B9AE67CBD6BF}.Release|Win32.Build.0 = Release|Win32
+		{D51D440D-6C23-425E-8FBD-F896FFEB50DD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D51D440D-6C23-425E-8FBD-F896FFEB50DD}.Debug|Win32.Build.0 = Debug|Win32
+		{D51D440D-6C23-425E-8FBD-F896FFEB50DD}.Release|Win32.ActiveCfg = Release|Win32
+		{D51D440D-6C23-425E-8FBD-F896FFEB50DD}.Release|Win32.Build.0 = Release|Win32
+		{EAC98606-7F16-42EA-9704-F15D363E7379}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EAC98606-7F16-42EA-9704-F15D363E7379}.Debug|Win32.Build.0 = Debug|Win32
+		{EAC98606-7F16-42EA-9704-F15D363E7379}.Release|Win32.ActiveCfg = Release|Win32
+		{EAC98606-7F16-42EA-9704-F15D363E7379}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EAC98606-7F16-42EA-9704-F15D363E7379} = {2C710783-1967-472E-A6F1-3D7A7F877F8E}
+	EndGlobalSection
+EndGlobal

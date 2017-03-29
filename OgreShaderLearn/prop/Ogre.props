@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <ThirdLib>E:\project\ogre\VREngine_local\OgreShader\OgreSample\ThirdLib</ThirdLib>
+    <OGRE_INC>$(ThirdLib)\ogre_V1_10\Components;(ThirdLib)\ogre_V1_10\Components\HLMS\include;$(ThirdLib)\ogre_V1_10\include;$(ThirdLib)\ogre_V1_10\OgreMain\include;$(ThirdLib)\ogre_V1_10\RenderSystems\Direct3D11\include;$(ThirdLib)\ogre_V1_10\RenderSystems\Direct3D9\include;$(ThirdLib)\ogre_V1_10\Components\RTShaderSystem\include;$(ThirdLib)\ogre_V1_10\Components\Property\include;$(ThirdLib)\ogre_V1_10\Components\Overlay\include;$(ThirdLib)\ogre_V1_10\Components\Paging\include;$(ThirdLib)\ogre_V1_10\Components\MeshLodGenerator\include;</OGRE_INC>
+    <OGRE_LIB>$(ThirdLib)\ogre_V1_10\lib\$(Configuration)\$(platform)</OGRE_LIB>
+    <ThirdInc>$(ThirdLib)\TinyXML;$(ThirdLib)\Dependencies\include;$(ThirdLib)\Dependencies\include\OIS;$(ThirdLib)\boost155_VC10;%(AdditionalIncludeDirectories)</ThirdInc>
+    <ThirdLib_Dir>$(ThirdLib)\Dependencies\lib\$(Configuration)\$(platform);$(ThirdLib)\boost155_VC10\lib\$(platform);%(AdditionalLibraryDirectories)</ThirdLib_Dir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IncludePath>$(OGRE_INC);$(SolutionDir);$(SolutionDir)\comm;$(IncludePath)</IncludePath>
+    <LibraryPath>$(OGRE_LIB);$(ThirdLib_Dir);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ThirdLib)\ogre_V1_10\include;$(ThirdLib)\ogre_V1_10\OgreMain\include;$(ThirdLib)\ogre_V1_10\RenderSystems\Direct3D11\include;$(ThirdLib)\ogre_V1_10\RenderSystems\Direct3D9\include;$(ThirdLib)\ogre_V1_10\Components\RTShaderSystem\include;$(ThirdLib)\ogre_V1_10\Components\Property\include;$(ThirdLib)\ogre_V1_10\Components\Overlay\include;$(ThirdLib)\ogre_V1_10\Components\Paging\include;$(ThirdLib)\ogre_V1_10\Components\MeshLodGenerator\include;$(Thirdinc)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BOOST_THREAD_VERSION=4;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="ThirdLib">
+      <Value>$(ThirdLib)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="OGRE_INC">
+      <Value>$(OGRE_INC)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OGRE_LIB">
+      <Value>$(OGRE_LIB)</Value>
+    </BuildMacro>
+    <BuildMacro Include="ThirdInc">
+      <Value>$(ThirdInc)</Value>
+    </BuildMacro>
+    <BuildMacro Include="ThirdLib_Dir">
+      <Value>$(ThirdLib_Dir)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
