@@ -1,15 +1,21 @@
-material ShaderLearn/Base
+//////////////////////////////////////////////////////////////////////////////////
+// 基础的贴图材质基类
+// @支持纹理贴图，且不受光照影响
+// @支持一重纹理图片
+//////////////////////////////////////////////////////////////////////////////////
+
+material ShaderLearn/Base_Image
 {
 	technique
 	{
 		pass
 		{
-			vertex_program_ref  ShaderLearn/Base_DX11_VS
+			vertex_program_ref  ShaderLearn/Base_Image_DX11_VS
 			{
 				
 			}
 			
-			fragment_program_ref ShaderLearn/Base_DX11_PS
+			fragment_program_ref ShaderLearn/Base_Image_DX11_PS
 			{
 				
 			}
@@ -22,7 +28,33 @@ material ShaderLearn/Base
 	}
 }
 
-material ShaderLearn/SkyDome/CloudySky : ShaderLearn/Base
+//////////////////////////////////////////////////////////////////////////////////
+// 基础的颜色材质基类
+// @支持颜色，且不受光照影响
+//////////////////////////////////////////////////////////////////////////////////
+
+
+material ShaderLearn/Base_Color
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref  ShaderLearn/Base_Color_DX11_VS
+			{
+				
+			}
+			
+			fragment_program_ref ShaderLearn/Base_Color_DX11_PS
+			{
+				
+			}
+			
+		}
+	}
+
+}
+material ShaderLearn/SkyDome/CloudySky : ShaderLearn/Base_Image
 {
 	technique
 	{
@@ -38,3 +70,39 @@ material ShaderLearn/SkyDome/CloudySky : ShaderLearn/Base
 		}
 	}
 }
+
+material ShaderLearn/Skybox/CloudySky : ShaderLearn/Base_Image
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			texture_unit
+			{
+				cubic_texture cloudsea.jpg separateUV
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+
+material ShaderLearn/ground/grass : ShaderLearn/Base_Image
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture grass_1024.jpg
+				
+			}
+		}
+	}
+}
+
+
+

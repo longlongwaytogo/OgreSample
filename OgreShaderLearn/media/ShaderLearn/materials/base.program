@@ -1,4 +1,6 @@
-vertex_program ShaderLearn/Base_DX11_VS hlsl
+/////////////////////////////////////////////////////////
+// @ image 
+vertex_program ShaderLearn/Base_Image_DX11_VS hlsl
 {
 	source base.fx
 	entry_point main_vs
@@ -13,9 +15,34 @@ vertex_program ShaderLearn/Base_DX11_VS hlsl
     }
 }
 
-fragment_program ShaderLearn/Base_DX11_PS hlsl
+fragment_program ShaderLearn/Base_Image_DX11_PS hlsl
 {
 	source base.fx
+	entry_point main_ps
+	target ps_4_0
+}
+
+/////////////////////////////////////////////////////////
+// @ color
+
+vertex_program ShaderLearn/Base_Color_DX11_VS hlsl
+{
+	source color.fx
+	entry_point main_vs
+	target vs_4_0
+	
+	  default_params
+    {
+        param_named_auto matWVP worldviewproj_matrix
+  
+       // param_named_auto matWV
+     //   param_named_auto ambient ambient_light_colour
+    }
+}
+
+fragment_program ShaderLearn/Base_Color_DX11_PS hlsl
+{
+	source color.fx
 	entry_point main_ps
 	target ps_4_0
 }

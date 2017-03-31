@@ -1,6 +1,6 @@
 
-
-material ShaderLearn/SkyDome/CloudySky2 : ShaderLearn/Base
+import ShaderLearn/Base_Image from "base.material"
+material ShaderLearn/SkyDome/CloudySky2 : ShaderLearn/Base_Image
 {
 	technique
 	{
