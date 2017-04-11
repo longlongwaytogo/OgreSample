@@ -5,7 +5,7 @@
 
 
 #include "stdafx.h"
-#include <comm/TutorialApplication.h>
+#include "TutorialApplication.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {

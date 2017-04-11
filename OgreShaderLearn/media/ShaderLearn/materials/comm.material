@@ -16,3 +16,33 @@ material ShaderLearn/SkyDome/CloudySky2 : ShaderLearn/Base_Image
 		}
 	}
 }
+
+material ShaderLearn/Ninja : ShaderLearn/Base_Image
+{
+	technique
+	{
+		pass
+		{
+
+			texture_unit
+			{
+				texture nskingr.jpg
+			}
+		}
+	}
+}
+
+material ShaderLearn/TudorHouse  : ShaderLearn/Base_Image
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture fw12b.jpg
+				tex_address_mode clamp
+			}
+		}
+	}
+}

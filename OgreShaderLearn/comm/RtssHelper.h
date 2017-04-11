@@ -109,14 +109,16 @@ namespace Rtss
 				return false;
 			}
 
-			if(window)
-			{
-				Ogre::Viewport* viewPort = window->getViewport(0);
-				viewPort->setMaterialScheme(Ogre::RTShader::ShaderGenerator::DEFAULT_SCHEME_NAME);
 
-			}
 			if(mRoot->getRenderSystem()->getCapabilities()->hasCapability(Ogre::RSC_FIXED_FUNCTION) == false)
 			{
+				if(window)
+				{
+					Ogre::Viewport* viewPort = window->getViewport(0);
+					viewPort->setMaterialScheme(Ogre::RTShader::ShaderGenerator::DEFAULT_SCHEME_NAME);
+
+				}
+
 				// creates shaders for base material BaseWhite using the RTSS
 				Ogre::MaterialPtr baseWhite = Ogre::MaterialManager::getSingleton().getByName("BaseWhite",
 					Ogre::ResourceGroupManager::INTERNAL_RESOURCE_GROUP_NAME);

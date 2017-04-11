@@ -32,7 +32,27 @@ void TutorialApplication::createScene(void)
 {
   
 	// Create your scene here :)
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(1, 1, 1)); 
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.31, 0.31, 0.31)); 
+	Ogre::Light* light = mSceneMgr->createLight("sun");
+	light->setPosition(200,200,200);
+	light->setCastShadows(true);
+	light->setDiffuseColour(1.0f,1.0f,1.0f);
+
+
+	//Ogre::Light* light = mSceneMgr->createLight();
+	//light->setType(Ogre::Light::LT_POINT);
+	light->setPosition(-10, 40, 20);
+	light->setSpecularColour(Ogre::ColourValue::White);
+
+	//light ->setCastShadows(true);
+	//light ->setShadowFarDistance (100);
+
+	////mSceneMgr->setShadowCameraSetup();
+	//mSceneMgr->setShadowTextureCasterMaterial("Nombre material");
+	//mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_TEXTURE_MODULATIVE_INTEGRATED);
+	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE/*SHADOWTYPE_STENCIL_ADDITIVE*/);
+
+
 	//mSceneMgr->setSkyDome(true,"ShaderLearn/SkyDome/CloudySky",5,8);
 	mSceneMgr->setSkyBox(true,"ShaderLearn/Skybox/CloudySky");
 
@@ -49,17 +69,43 @@ void TutorialApplication::createScene(void)
 	planeNode->attachObject(pPlaneEnt);
 	planeNode->setPosition(Ogre::Vector3(0.0f,0.0f,-10.0f));
 
-	Ogre::String triangleName("triangle1");
-	CTriangle::Get()->createTriangle(triangleName,
-			
-			Ogre::Vector3(100,0,0),
-			Ogre::Vector3(0,50,0),
-			Ogre::Vector3(-100,0,0),
-			
-			Ogre::ColourValue(1.0f,0.0f,0.0f,1.0f)
-			);
+	//Ogre::String triangleName("triangle1");
+	//CTriangle::Get()->createTriangle(triangleName,
+	//		
+	//		Ogre::Vector3(100,0,-50),
+	//		Ogre::Vector3(0,50,-50),
+	//		Ogre::Vector3(-100,0,-50),
+	//		
+	//		Ogre::ColourValue(1.0f,0.0f,0.0f,1.0f)
+	//		);
 
 
+	// House
+	Ogre::Entity* pEnt;
+	pEnt = mSceneMgr->createEntity( "house1", "tudorhouse.mesh" );
+	pEnt->setMaterialName("ShaderLearn/TudorHouse");
+
+	pEnt->setQueryFlags(Ogre::SceneManager::WORLD_GEOMETRY_TYPE_MASK);
+	Ogre::SceneNode* n1 = mSceneMgr->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(0, 5.5, 5));
+	n1->scale(0.01f,0.01f,0.01f);
+	n1->attachObject( pEnt );
+
+	pEnt = mSceneMgr->createEntity( "house2", "tudorhouse.mesh" );
+	pEnt->setMaterialName("ShaderLearn/TudorHouse");
+	pEnt->setQueryFlags(Ogre::SceneManager::WORLD_GEOMETRY_TYPE_MASK);
+	Ogre::SceneNode* n2 = mSceneMgr->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(0, 5.5, -5));
+	n2->scale(0.01f,0.01f,0.01f);
+	n2->attachObject( pEnt );
+	//ninja
+	pEnt = mSceneMgr->createEntity( "ninja", "ninja.mesh" );
+	pEnt->setMaterialName("ShaderLearn/Ninja");
+
+	pEnt->setQueryFlags(Ogre::SceneManager::ENTITY_TYPE_MASK);
+	Ogre::SceneNode* ninjaNode=mSceneMgr->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(6, 0, 5));
+	ninjaNode->attachObject(pEnt);
+	ninjaNode->setScale(0.01f,0.01f,0.01f);
+
+	
 
 	
 	// Create your scene here :)
@@ -82,40 +128,40 @@ void TutorialApplication::createCamera(void)
 
 //---------------------------------------------------------------------------
 
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-#define WIN32_LEAN_AND_MEAN
-#include "windows.h"
-#endif
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-	INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT)
-#else
-	int main(int argc, char *argv[])
-#endif
-	{
-		// Create application object
-		TutorialApplication app;
-
-		try {
-			app.go();
-		} catch(Ogre::Exception& e)  {
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-			MessageBoxA(NULL, e.getFullDescription().c_str(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
-#else
-			std::cerr << "An exception has occurred: " <<
-				e.getFullDescription().c_str() << std::endl;
-#endif
-		}
-
-		return 0;
-	}
-
-#ifdef __cplusplus
-}
-#endif
+//#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+//#define WIN32_LEAN_AND_MEAN
+//#include "windows.h"
+//#endif
+//
+//#ifdef __cplusplus
+//extern "C" {
+//#endif
+//
+//#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+//	INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT)
+//#else
+//	int main(int argc, char *argv[])
+//#endif
+//	{
+//		// Create application object
+//		TutorialApplication app;
+//
+//		try {
+//			app.go();
+//		} catch(Ogre::Exception& e)  {
+//#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+//			MessageBoxA(NULL, e.getFullDescription().c_str(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
+//#else
+//			std::cerr << "An exception has occurred: " <<
+//				e.getFullDescription().c_str() << std::endl;
+//#endif
+//		}
+//
+//		return 0;
+//	}
+//
+//#ifdef __cplusplus
+//}
+//#endif
 
 //---------------------------------------------------------------------------

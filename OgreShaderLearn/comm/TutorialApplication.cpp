@@ -26,12 +26,69 @@ TutorialApplication::~TutorialApplication(void)
 {
 }
 
+void TutorialApplication::go(bool bUseRtss)
+{
+	mbUseRtss = bUseRtss;
+
+#ifdef _DEBUG
+#ifndef OGRE_STATIC_LIB
+	mResourcesCfg = m_ResourcePath + "resources_all_d.cfg";
+	mPluginsCfg = m_ResourcePath + "plugins_d.cfg";
+#else
+	mResourcesCfg = "resources_all_d.cfg";
+	mPluginsCfg = "plugins_d.cfg";
+#endif
+#else
+#ifndef OGRE_STATIC_LIB
+	mResourcesCfg = m_ResourcePath + "resources.cfg";
+	mPluginsCfg = m_ResourcePath + "plugins.cfg";
+#else
+	mResourcesCfg = "resources.cfg";
+	mPluginsCfg = "plugins.cfg";
+#endif
+#endif
+
+	if (!setup())
+		return;
+
+	mRoot->startRendering();
+
+	// Clean up
+	destroyScene();
+}
+
 //---------------------------------------------------------------------------
 void TutorialApplication::createScene(void)
 {
     // Create your scene here :)
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(1, 1, 1));
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.31, 0.31, 0.31));
 	mSceneMgr->setSkyDome(true,"Examples/CloudySky",5,8);
+
+	// set shadow properties
+	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_TEXTURE_MODULATIVE);
+	mSceneMgr->setShadowColour(Ogre::ColourValue(0.5, 0.5, 0.5));
+	mSceneMgr->setShadowTextureSize(1024);
+	mSceneMgr->setShadowTextureCount(1);
+
+	// disable default camera control so the character can do its own
+	//mCameraMan->setStyle(CS_MANUAL);
+
+	// use a small amount of ambient lighting
+	//mSceneMgr->setAmbientLight(Ogre::ColourValue(0.3, 0.3, 0.3));
+
+	// add a bright light above the scene
+	Ogre::Light* light = mSceneMgr->createLight();
+	light->setType(Ogre::Light::LT_POINT);
+	light->setPosition(-10, 40, 20);
+	light->setSpecularColour(Ogre::ColourValue::White);
+
+
+
+
+	////mSceneMgr->setShadowCameraSetup();
+	//mSceneMgr->setShadowTextureCasterMaterial("Nombre material");
+	//sm->setShadowTechnique(Ogre::SHADOWTYPE_TEXTURE_MODULATIVE_INTEGRATED);
+//	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 
 	// plane
 	Ogre::Plane plane;
@@ -110,7 +167,7 @@ extern "C" {
         TutorialApplication app;
 
         try {
-            app.go();
+            app.go(true);
         } catch(Ogre::Exception& e)  {
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
             MessageBoxA(NULL, e.getFullDescription().c_str(), "An exception has occurred!", MB_OK | MB_ICONERROR | MB_TASKMODAL);

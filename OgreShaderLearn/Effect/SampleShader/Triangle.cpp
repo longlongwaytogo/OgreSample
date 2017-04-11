@@ -12,26 +12,29 @@ Ogre::MovableObject* CTriangle::createTriangle(Ogre::String& name,Ogre::Vector3 
 	Ogre::MovableObject* obj = NULL;
 	
 	Ogre::ManualObject* manual = mgr->createManualObject(name);
-	manual->begin("ShaderLearn/Base_Color", Ogre::RenderOperation::OT_TRIANGLE_STRIP);
+	manual->begin("ShaderLearn/Base_Color", Ogre::RenderOperation::OT_TRIANGLE_LIST);
 
 	// define start and end point
 	manual->position(v1);
-	//manual->textureCoord(0,0);
+    //manual->textureCoord(0,0);
 	manual->colour(clr);
+	manual->normal(0,0,1);
 
 	manual->position(v2);
-	//manual->textureCoord(0,0);
+	//manual->textureCoord(0.5,0.5);
 	manual->colour(clr);
+	manual->normal(0,0,1);
 
 	manual->position(v3);
-	//manual->textureCoord(0,0);
+	//manual->textureCoord(1,0);
 	manual->colour(clr);
-
+	manual->normal(0,0,1);
 
 	manual->index(0);
 	manual->index(1);
 	manual->index(2);
 
+	 manual->triangle(0, 1, 2);
 	// tell Ogre, your definition has finished
 	manual->end();
 

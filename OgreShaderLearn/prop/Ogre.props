@@ -6,7 +6,7 @@
     <OGRE_INC>$(ThirdLib)\ogre_V1_10\Components;(ThirdLib)\ogre_V1_10\Components\HLMS\include;$(ThirdLib)\ogre_V1_10\include;$(ThirdLib)\ogre_V1_10\OgreMain\include;$(ThirdLib)\ogre_V1_10\RenderSystems\Direct3D11\include;$(ThirdLib)\ogre_V1_10\RenderSystems\Direct3D9\include;$(ThirdLib)\ogre_V1_10\Components\RTShaderSystem\include;$(ThirdLib)\ogre_V1_10\Components\Property\include;$(ThirdLib)\ogre_V1_10\Components\Overlay\include;$(ThirdLib)\ogre_V1_10\Components\Paging\include;$(ThirdLib)\ogre_V1_10\Components\MeshLodGenerator\include;</OGRE_INC>
     <OGRE_LIB>$(ThirdLib)\ogre_V1_10\lib\$(Configuration)\$(platform)</OGRE_LIB>
     <ThirdInc>$(ThirdLib)\TinyXML;$(ThirdLib)\Dependencies\include;$(ThirdLib)\Dependencies\include\OIS;$(ThirdLib)\boost155_VC10;%(AdditionalIncludeDirectories)</ThirdInc>
-    <ThirdLib_Dir>$(ThirdLib)\Dependencies\lib\$(Configuration)\$(platform);$(ThirdLib)\boost155_VC10\lib\$(platform);%(AdditionalLibraryDirectories)</ThirdLib_Dir>
+    <ThirdLib_Dir>$(ThirdLib)\NvAPI_378;$(ThirdLib)\Dependencies\lib\$(Configuration)\$(platform);$(ThirdLib)\boost155_VC10\lib\$(platform);%(AdditionalLibraryDirectories)</ThirdLib_Dir>
   </PropertyGroup>
   <PropertyGroup>
     <IncludePath>$(OGRE_INC);$(SolutionDir);$(SolutionDir)\comm;$(IncludePath)</IncludePath>

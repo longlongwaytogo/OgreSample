@@ -27,10 +27,10 @@
     <ClInclude Include="..\comm\BaseApplication.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\comm\TutorialApplication.h">
+    <ClInclude Include="..\comm\LibHead.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\comm\LibHead.h">
+    <ClInclude Include="..\comm\TutorialApplication.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,10 +41,10 @@
     <ClCompile Include="OgreShaderLearn.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\comm\TutorialApplication.cpp">
+    <ClCompile Include="..\comm\BaseApplication.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\comm\BaseApplication.cpp">
+    <ClCompile Include="..\comm\TutorialApplication.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

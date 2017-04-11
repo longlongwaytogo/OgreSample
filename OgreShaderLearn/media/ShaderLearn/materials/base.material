@@ -71,6 +71,8 @@ material ShaderLearn/SkyDome/CloudySky : ShaderLearn/Base_Image
 	}
 }
 
+
+
 material ShaderLearn/Skybox/CloudySky : ShaderLearn/Base_Image
 {
 	technique

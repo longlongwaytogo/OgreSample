@@ -28,6 +28,8 @@ public:
     TutorialApplication(void);
     virtual ~TutorialApplication(void);
 
+	virtual void go(bool bUseRtss  = false);
+
 protected:
     virtual void createScene(void);
 };

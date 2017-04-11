@@ -1,4 +1,13 @@
 
+//
+//#if USE_NV_STEREO 
+//#	ifdef _WIN64
+//#	pragma comment(lib,"amd64/nvapi64.lib")
+//#	else
+//#	pragma comment(lib,"../x86/nvapi.lib")
+//
+//#	endif 
+//#endif 
 
 #ifdef _WIN64
 
