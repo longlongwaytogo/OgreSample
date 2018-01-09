@@ -1,0 +1,60 @@
+material ShaderLearn/Base
+{
+	technique
+	{
+		pass
+		{
+			vertex_program_ref  ShaderLearn/Base_DX11_VS
+			{
+				
+			}
+			
+			fragment_program_ref ShaderLearn/Base_DX11_PS
+			{
+				
+			}
+			texture_unit 
+			{
+				//texture Water01.jpg
+				
+			}
+		}
+	}
+}
+
+material ShaderLearn/SkyDome/CloudySky : ShaderLearn/Base
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			texture_unit
+			{
+				texture clouds.jpg
+				scroll_anim 0.15 0
+			}
+		}
+	}
+}
+
+material ShaderLearn/Skybox/CloudySky : ShaderLearn/Base
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			texture_unit
+			{
+				cubic_texture cloudsea.jpg separateUV
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+stevecube
+

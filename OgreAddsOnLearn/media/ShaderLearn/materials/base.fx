@@ -54,13 +54,3 @@ float4 main_ps(PS_IN In) : SV_Target
   float4 color = txDiffuse.Sample(ss, In.tcoord);
   return color;
 }
-
-float4 main_invert_ps(PS_IN In) : SV_Target
-{
-   // PS_OUT Out;
-   // Out.color = txDiffuse.Sample(ss, In.tcoord);
-  //  return Out;
-  float4 color = txDiffuse.Sample(ss, In.tcoord);
-  float4 ret = float4(1-color.x,1-color.y,1-color.z,1);
-  return ret;
-}

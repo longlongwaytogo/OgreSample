@@ -1,0 +1,8 @@
+OgreShaderLearn
+OgreAddsOnLearn 
+
+1、ogre 原始Media数据没有上传，需要自行拷贝
+2、Ogre配置需要ThirdLib库目录下配置Ogre源码版本
+3、Ogre以来dll未上传
+
+依赖于ThirdLib库，该库包含Ogre引擎和第三方库

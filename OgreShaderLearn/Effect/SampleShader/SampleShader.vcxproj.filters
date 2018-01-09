@@ -36,6 +36,9 @@
     <ClInclude Include="stereo\stereo.h">
       <Filter>stereo</Filter>
     </ClInclude>
+    <ClInclude Include="compositor\compositors.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -52,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="stereo\stereo.cpp">
       <Filter>stereo</Filter>
+    </ClCompile>
+    <ClCompile Include="compositor\compositors.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -21,6 +21,8 @@ http://www.ogre3d.org/wiki/
 //---------------------------------------------------------------------------
 TutorialApplication::TutorialApplication(void)
 {
+	for(int i = 0; i < 20; ++i)
+		mCompositorEnable[i] = false;
 }
 //---------------------------------------------------------------------------
 TutorialApplication::~TutorialApplication(void)
@@ -62,8 +64,9 @@ void TutorialApplication::createScene(void)
 	Ogre::MeshManager::getSingleton().createPlane("Myplane",Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 		plane,1500, 1500, 100, 100, true, 1, 200, 200, Ogre::Vector3::UNIT_Z);
 	Ogre::Entity* pPlaneEnt = mSceneMgr->createEntity( "plane", "Myplane" );
-
+	
 	pPlaneEnt->setMaterialName("ShaderLearn/ground/grass");
+	//pPlaneEnt->setMaterialName("ShaderLearn/ground/grass_invert");
 	pPlaneEnt->setCastShadows(false);
 	Ogre::SceneNode* planeNode=mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	planeNode->attachObject(pPlaneEnt);
@@ -84,6 +87,9 @@ void TutorialApplication::createScene(void)
 	Ogre::Entity* pEnt;
 	pEnt = mSceneMgr->createEntity( "house1", "tudorhouse.mesh" );
 	pEnt->setMaterialName("ShaderLearn/TudorHouse");
+	
+	//pEnt->setMaterialName("ShaderLearn/TudorHouse_invet");
+	//pEnt->setMaterialName("Ogre/Compositor/BlackAndWhite");
 
 	pEnt->setQueryFlags(Ogre::SceneManager::WORLD_GEOMETRY_TYPE_MASK);
 	Ogre::SceneNode* n1 = mSceneMgr->getRootSceneNode()->createChildSceneNode(Ogre::Vector3(0, 5.5, 5));
@@ -105,10 +111,19 @@ void TutorialApplication::createScene(void)
 	ninjaNode->attachObject(pEnt);
 	ninjaNode->setScale(0.01f,0.01f,0.01f);
 
-	
+	//Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"B&W");
+	//Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"compositor/Invert");
+	Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"compositor/MotionBlur");
+	Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),"compositor/MotionBlur",true);
 
+	/*Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"B&W");
+	Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),"B&W",true);*/
 	
+	/*Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"compositor/Invert");
+	Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),"compositor/Invert",true);*/
+
 	// Create your scene here :)
+	
 }
 
 void TutorialApplication::createCamera(void)
@@ -124,6 +139,60 @@ void TutorialApplication::createCamera(void)
 
 	
 
+}
+
+#define IF_KEY(inputKye,compKey, compositorName) \
+ if(inputKye == compKey) \
+{				\
+	if(mCompositorEnable[inputKye - OIS::KC_1] == false) \
+		mCompositorEnable[inputKye - OIS::KC_1] = true; \
+	else	\
+		mCompositorEnable[inputKye - OIS::KC_1] = false; \
+		printf("arg.key:%d,key:%d,name:%s\n",inputKye,compKey,compositorName); \
+	Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),compositorName,mCompositorEnable[inputKye - OIS::KC_1]); \
+}
+
+bool TutorialApplication::keyPressed(const OIS::KeyEvent &arg)
+{
+	//
+	IF_KEY(arg.key,OIS::KeyCode::KC_1,"B&W")
+	else 
+	IF_KEY(arg.key,OIS::KeyCode::KC_2,"compositor/Invert")
+	else 
+	IF_KEY(arg.key,OIS::KeyCode::KC_3,"compositor/MotionBlur")
+	else if(arg.key == OIS::KC_P)
+	{
+
+		Ogre::CompositorManager::getSingleton().getByName("compositor/MotionBlur")->getRenderTarget("scene")->writeContentsToFile("scene.jpg");
+	}
+
+	/*if(arg.key == OIS::KC_1)
+	{
+		if(mCompositorEnable[arg.key - OIS::KC_1] == false)
+			mCompositorEnable[arg.key - OIS::KC_1] = true;
+		else 
+			mCompositorEnable[arg.key - OIS::KC_1] = false;
+		Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),"B&W",mCompositorEnable[arg.key - OIS::KC_1]);
+	}
+	if(arg.key == OIS::KC_2)
+	{
+		if(mCompositorEnable[arg.key - OIS::KC_1] == false)
+			mCompositorEnable[arg.key - OIS::KC_1] = true;
+		else 
+			mCompositorEnable[arg.key - OIS::KC_1] = false;
+		Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),"compositor/Invert",mCompositorEnable[arg.key - OIS::KC_1]);
+	}
+	*/
+	else if(arg.key == OIS::KC_ESCAPE)
+	{
+		mRoot->shutdown();
+	}
+	return __super::keyPressed(arg);
+}
+
+bool TutorialApplication::keyReleased(const OIS::KeyEvent &arg)
+{
+	return __super::keyReleased(arg);
 }
 
 //---------------------------------------------------------------------------

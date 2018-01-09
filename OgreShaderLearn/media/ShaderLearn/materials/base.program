@@ -22,6 +22,14 @@ fragment_program ShaderLearn/Base_Image_DX11_PS hlsl
 	target ps_4_0
 }
 
+
+fragment_program ShaderLearn/Base_Image_Invert_DX11_PS hlsl
+{
+	source base.fx
+	entry_point main_invert_ps
+	target ps_4_0
+}
+
 /////////////////////////////////////////////////////////
 // @ color
 

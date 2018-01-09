@@ -30,12 +30,6 @@ public:
 
 protected:
     virtual void createScene(void);
-	virtual void createCamera(void);
-	virtual bool keyPressed(const OIS::KeyEvent &arg);
-	virtual bool keyReleased(const OIS::KeyEvent &arg);
-
-private:
-	bool mCompositorEnable[20];
 };
 
 //---------------------------------------------------------------------------

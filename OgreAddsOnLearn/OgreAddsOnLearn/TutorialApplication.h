@@ -9,7 +9,7 @@ This source file is part of the
  //  // _` | '__/ _ \ \ \/  \/ / | |/ / |
 / \_// (_| | | |  __/  \  /\  /| |   <| |
 \___/ \__, |_|  \___|   \/  \/ |_|_|\_\_|
-      |___/
+	  |___/
 Tutorial Framework (for Ogre 1.9)
 http://www.ogre3d.org/wiki/
 -----------------------------------------------------------------------------
@@ -25,17 +25,12 @@ http://www.ogre3d.org/wiki/
 class TutorialApplication : public BaseApplication
 {
 public:
-    TutorialApplication(void);
-    virtual ~TutorialApplication(void);
+	TutorialApplication(void);
+	virtual ~TutorialApplication(void);
 
 protected:
-    virtual void createScene(void);
+	virtual void createScene(void);
 	virtual void createCamera(void);
-	virtual bool keyPressed(const OIS::KeyEvent &arg);
-	virtual bool keyReleased(const OIS::KeyEvent &arg);
-
-private:
-	bool mCompositorEnable[20];
 };
 
 //---------------------------------------------------------------------------
