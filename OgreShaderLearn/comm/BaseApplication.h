@@ -28,6 +28,8 @@ http://www.ogre3d.org/wiki/
 #include <OgreSceneManager.h>
 #include <OgreRenderWindow.h>
 #include <OgreConfigFile.h>
+#include <OgreHlmsManager.h>
+#include <OgreHlmsPbsMaterial.h>
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
 #  include <OIS/OISEvents.h>
@@ -76,7 +78,7 @@ public:
     BaseApplication();
     virtual ~BaseApplication(void);
 
-    virtual void go(bool bUseRtss = false);
+    virtual void go(bool bUseRtss = false, bool bUseHmls = true);
 
 protected:
     virtual bool setup();
@@ -129,6 +131,10 @@ protected:
     Ogre::String                 m_ResourcePath;
 	bool					     mbUseRtss;
 	Rtss::RtssHelper			 mRrtssHelper;
+	bool						 mbUseHlms;
+	Ogre::HlmsManager*			 mHlmsMgr;
+
+
 
 #ifdef OGRE_STATIC_LIB
     Ogre::StaticPluginLoader m_StaticPluginLoader;

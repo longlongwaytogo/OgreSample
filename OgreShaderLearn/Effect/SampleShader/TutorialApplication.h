@@ -20,6 +20,8 @@ http://www.ogre3d.org/wiki/
 
 #include "BaseApplication.h"
 
+class CHlmsSphere;
+
 //---------------------------------------------------------------------------
 
 class TutorialApplication : public BaseApplication
@@ -36,6 +38,7 @@ protected:
 
 private:
 	bool mCompositorEnable[20];
+	CHlmsSphere* mSphere;
 };
 
 //---------------------------------------------------------------------------

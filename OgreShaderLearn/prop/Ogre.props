@@ -14,7 +14,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ThirdLib)\ogre_V1_10\include;$(ThirdLib)\ogre_V1_10\OgreMain\include;$(ThirdLib)\ogre_V1_10\RenderSystems\Direct3D11\include;$(ThirdLib)\ogre_V1_10\RenderSystems\Direct3D9\include;$(ThirdLib)\ogre_V1_10\Components\RTShaderSystem\include;$(ThirdLib)\ogre_V1_10\Components\Property\include;$(ThirdLib)\ogre_V1_10\Components\Overlay\include;$(ThirdLib)\ogre_V1_10\Components\Paging\include;$(ThirdLib)\ogre_V1_10\Components\MeshLodGenerator\include;$(Thirdinc)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ThirdLib)\ogre_V1_10\include;$(ThirdLib)\ogre_V1_10\OgreMain\include;$(ThirdLib)\ogre_V1_10\RenderSystems\Direct3D11\include;$(ThirdLib)\ogre_V1_10\RenderSystems\Direct3D9\include;$(ThirdLib)\ogre_V1_10\Components\RTShaderSystem\include;$(ThirdLib)\ogre_V1_10\Components\Property\include;$(ThirdLib)\ogre_V1_10\Components\Overlay\include;$(ThirdLib)\ogre_V1_10\Components\Paging\include;$(ThirdLib)\Ogre_V1_10\Components\HLMS\include;$(ThirdLib)\ogre_V1_10\Components\MeshLodGenerator\include;$(Thirdinc)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BOOST_THREAD_VERSION=4;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>

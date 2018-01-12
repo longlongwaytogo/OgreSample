@@ -9,6 +9,9 @@ Description: 开启Ogre对固定管线的支持，使用Ogre的RTSS机制
 
 #include <Ogre.h>
 #include <OgreRTShaderSystem.h>
+#include <direct.h>
+#include <io.h>
+
 
 #define _RTSS_WRITE_SHADERS_TO_DISK 
 namespace Rtss
@@ -191,6 +194,9 @@ namespace Rtss
 						{
 							shaderCoreLibsPath = (*it)->archive->getName() + "/cache/";
 							shaderCachePath = shaderCoreLibsPath;
+							if(_access(shaderCachePath.c_str(),0)!=0)
+								_mkdir(shaderCachePath.c_str());
+							
 							coreLibsFound = true;
 							break;
 						}

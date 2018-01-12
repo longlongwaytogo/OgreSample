@@ -17,6 +17,7 @@ http://www.ogre3d.org/wiki/
 
 #include "TutorialApplication.h"
 #include "Triangle.h"
+#include "HlmsSphere.h"
 
 //---------------------------------------------------------------------------
 TutorialApplication::TutorialApplication(void)
@@ -27,6 +28,7 @@ TutorialApplication::TutorialApplication(void)
 //---------------------------------------------------------------------------
 TutorialApplication::~TutorialApplication(void)
 {
+	delete mSphere;
 }
 
 //---------------------------------------------------------------------------
@@ -111,19 +113,24 @@ void TutorialApplication::createScene(void)
 	ninjaNode->attachObject(pEnt);
 	ninjaNode->setScale(0.01f,0.01f,0.01f);
 
-	//Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"B&W");
-	//Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"compositor/Invert");
-	Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"compositor/MotionBlur");
-	Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),"compositor/MotionBlur",true);
+	Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"B&W");
+	Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"compositor/Invert");
+	//Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"compositor/MotionBlur");
+	//Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),"compositor/MotionBlur",true);
 
 	/*Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"B&W");
 	Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),"B&W",true);*/
 	
-	/*Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"compositor/Invert");
-	Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),"compositor/Invert",true);*/
+//	Ogre::CompositorManager::getSingleton().addCompositor(mCamera->getViewport(),"compositor/Invert");
+//	Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),"compositor/Invert",true);
+	Ogre::CompositorManager::getSingleton().setCompositorEnabled(mCamera->getViewport(),"B&W",true);
 
 	// Create your scene here :)
+
+	// create CHlmsSphere
 	
+	mSphere = new CHlmsSphere(mSceneMgr,mHlmsMgr);
+	// mSphere->createSphere();
 }
 
 void TutorialApplication::createCamera(void)

@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="compositor\compositors.h" />
+    <ClInclude Include="HlmsSphere.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="stereo\stereo.h" />
     <ClInclude Include="targetver.h" />
@@ -93,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="compositor\compositors.cpp" />
+    <ClCompile Include="HlmsSphere.cpp" />
     <ClCompile Include="SampleShader.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

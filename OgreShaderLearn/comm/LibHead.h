@@ -18,6 +18,7 @@
 #pragma  comment(lib,"boost_filesystem-vc100-mt-gd-1_55.lib")
 #pragma  comment(lib,"OIS_d.lib;dbghelp.lib")
 #pragma  comment(lib,"OgreMain_d.lib")
+#pragma  comment(lib,"OgreHLMS_d.lib")
 #pragma  comment(lib,"OgreOverlay_d.lib")
 
 #	else
@@ -28,6 +29,7 @@
 #pragma  comment(lib,"boost_filesystem-vc100-mt-1_55.lib")
 #pragma  comment(lib,"OIS.lib")
 #pragma  comment(lib,"OgreMain.lib")
+#pragma  comment(lib,"OgreHLMS.lib")
 #pragma  comment(lib,"OgreOverlay.lib")
 #pragma  comment(lib,"OgreRTShaderSystem.lib")
 
@@ -44,6 +46,7 @@
 #pragma  comment(lib,"boost_filesystem-vc100-mt-gd-1_55.lib")
 #pragma  comment(lib,"OIS_d.lib")
 #pragma  comment(lib,"OgreMain_d.lib")
+#pragma  comment(lib,"OgreHLMS_d.lib")
 #pragma  comment(lib,"OgreOverlay_d.lib")
 #pragma  comment(lib,"OgreRTShaderSystem_d.lib")
 //#pragma  comment(lib,"RenderSystem_Direct3D11_d.lib")
@@ -58,6 +61,7 @@
 #pragma  comment(lib,"boost_filesystem-vc100-mt-1_55.lib")
 #pragma  comment(lib,"OIS.lib")
 #pragma  comment(lib,"OgreMain.lib")
+#pragma  comment(lib,"OgreHLMS.lib")
 #pragma  comment(lib,"OgreOverlay.lib")
 #pragma  comment(lib,"OgreRTShaderSystem.lib")
 #	endif 

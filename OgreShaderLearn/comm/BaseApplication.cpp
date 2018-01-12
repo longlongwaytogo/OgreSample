@@ -38,7 +38,9 @@ BaseApplication::BaseApplication(void)
     mMouse(0),
     mKeyboard(0),
     mOverlaySystem(0),
-	mbUseRtss(false)
+	mbUseRtss(false),
+	mbUseHlms(false),
+	mHlmsMgr(nullptr)
 {
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
     m_ResourcePath = Ogre::macBundlePath() + "/Contents/Resources/";
@@ -164,7 +166,8 @@ void BaseApplication::createFrameListener(void)
 //---------------------------------------------------------------------------
 void BaseApplication::destroyScene(void)
 {
-	mRrtssHelper.finish();
+	
+
 }
 //---------------------------------------------------------------------------
 void BaseApplication::createViewports(void)
@@ -222,9 +225,10 @@ void BaseApplication::loadResources(void)
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
 //---------------------------------------------------------------------------
-void BaseApplication::go(bool bUseRtss)
+void BaseApplication::go(bool bUseRtss,bool bUseHmls)
 {
 	mbUseRtss = bUseRtss;
+	mbUseHlms = bUseHmls;
 
 #ifdef _DEBUG
 #ifndef OGRE_STATIC_LIB
@@ -269,6 +273,12 @@ bool BaseApplication::setup(void)
 
 	if(mbUseRtss)
 		mRrtssHelper.initRtss(mSceneMgr,mWindow);
+	
+	// use hlms
+	if(mbUseHlms)
+	{
+		mHlmsMgr = new Ogre::HlmsManager(mSceneMgr);
+	}
 
     // Set default mipmap level (NB some APIs ignore this)
     Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
@@ -461,11 +471,20 @@ void BaseApplication::windowClosed(Ogre::RenderWindow* rw)
         if(mInputManager)
         {
             mInputManager->destroyInputObject(mMouse);
+			mMouse = nullptr;
             mInputManager->destroyInputObject(mKeyboard);
-
+			mKeyboard = nullptr;
             OIS::InputManager::destroyInputSystem(mInputManager);
-            mInputManager = 0;
+            mInputManager = nullptr;
         }
     }
+
+	if(mbUseRtss)
+		mRrtssHelper.finish();
+	
+
+	if(mbUseHlms)
+		delete mHlmsMgr;
+	mHlmsMgr = nullptr;
 }
 //---------------------------------------------------------------------------
